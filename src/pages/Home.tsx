@@ -6,7 +6,7 @@ const Home: React.FC = () => {
     <div>
       <button
         onClick={() => {
-          nav("/document");
+          nav("/document/test1");
         }}
       >
         문서 보러가기

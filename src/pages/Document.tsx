@@ -1,4 +1,7 @@
 import { useNavigate } from "react-router-dom";
+import DocsBox from "../component/DocsBox";
+import ShowDocs from "../component/ShowDocs";
+
 const Doc: React.FC = () => {
   const nav = useNavigate();
   return (
@@ -12,8 +15,14 @@ const Doc: React.FC = () => {
         >
           홈으로
         </button>
+        <DocsBox />
+        <DocsBox />
+        <DocsBox />
+        <DocsBox />
       </div>
-      <div className="flex-1 bg-green-500"></div>
+      <div className="flex-1 bg-green-500">
+        <ShowDocs />
+      </div>
     </div>
   );
 };
