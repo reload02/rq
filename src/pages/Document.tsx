@@ -9,7 +9,7 @@ const Doc: React.FC = () => {
     <div>
       <Header />
       <div className="flex h-screen">
-        <div className="w-[230px] bg-blue-500">
+        <div className="h-full w-[230px] bg-[#f9f9f9]">
           <button
             onClick={() => {
               nav("/");
@@ -23,7 +23,7 @@ const Doc: React.FC = () => {
           <DocsBox boxName="3번 내용들" />
           <DocsBox boxName="4번 내용들" />
         </div>
-        <div className="flex-1 bg-green-500">
+        <div className="flex-1 overflow-y-auto">
           <ShowDocs />
         </div>
       </div>
