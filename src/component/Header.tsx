@@ -1,9 +1,26 @@
+import { useNavigate } from "react-router-dom";
+
 const Header: React.FC = () => {
+  const nav = useNavigate();
   return (
-    <div className="h-16 bg-[#f9f9f9]">
-      <button>DashBoard</button>
-      <button>Docs</button>
-      <button>Profile</button>
+    <div className="flex h-16 justify-end bg-[#f9f9f9]">
+      <button className="mr-10">DashBoard</button>
+      <button
+        className="mr-10"
+        onClick={() => {
+          nav("/document/test1");
+        }}
+      >
+        Docs
+      </button>
+      <button
+        className="mr-10"
+        onClick={() => {
+          nav("/profile");
+        }}
+      >
+        Profile
+      </button>
     </div>
   );
 };

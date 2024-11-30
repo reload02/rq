@@ -9,14 +9,14 @@ const DocsBox: React.FC<DocsBoxProps> = ({ boxName }) => {
   const nav = useNavigate();
   return (
     <div className="ml-4 w-[170px]">
-      <h1 className="font-bold">{boxName}</h1>
+      <h1 className="">{boxName}</h1>
       <p
         className="docList"
         onClick={() => {
           nav("/document/test1");
         }}
       >
-        1번 문서
+        first Docs
       </p>
       <p
         className="docList"
@@ -24,7 +24,7 @@ const DocsBox: React.FC<DocsBoxProps> = ({ boxName }) => {
           nav("/document/test2");
         }}
       >
-        2번 문서
+        second Docs
       </p>
       <p
         className="docList"
@@ -32,7 +32,7 @@ const DocsBox: React.FC<DocsBoxProps> = ({ boxName }) => {
           nav("/document/test3");
         }}
       >
-        3번 문서
+        third Docs
       </p>
     </div>
   );
