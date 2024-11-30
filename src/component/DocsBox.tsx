@@ -1,12 +1,17 @@
 import { useNavigate } from "react-router-dom";
+import "./tailwind.css";
 
-const DocsBox: React.FC = () => {
+interface DocsBoxProps {
+  boxName: string;
+}
+
+const DocsBox: React.FC<DocsBoxProps> = ({ boxName }) => {
   const nav = useNavigate();
   return (
-    <div className="ml-4">
-      <h1 className="font-bold">1번 문서 박스</h1>
+    <div className="ml-4 w-[170px]">
+      <h1 className="font-bold">{boxName}</h1>
       <p
-        className="hover:bg-slate-500"
+        className="docList"
         onClick={() => {
           nav("/document/test1");
         }}
@@ -14,7 +19,7 @@ const DocsBox: React.FC = () => {
         1번 문서
       </p>
       <p
-        className="hover:bg-slate-500"
+        className="docList"
         onClick={() => {
           nav("/document/test2");
         }}
@@ -22,7 +27,7 @@ const DocsBox: React.FC = () => {
         2번 문서
       </p>
       <p
-        className="hover:bg-slate-500"
+        className="docList"
         onClick={() => {
           nav("/document/test3");
         }}

@@ -1,0 +1,3 @@
+.docList {
+  @apply rounded-md pl-1 hover:bg-slate-500;
+}
