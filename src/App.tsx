@@ -1,10 +1,16 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./index.css";
+import Home from "./pages/Home";
+import Doc from "./pages/Document";
 
 function App() {
   return (
-    <button className="mt-4 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600">
-      테스트
-    </button>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/document" element={<Doc />} />
+      </Routes>
+    </Router>
   );
 }
 
