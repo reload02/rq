@@ -4,7 +4,7 @@ import CodeBlock from "../component/CodeBlock";
 const SampleDocs: React.FC = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
   const handleScroll = (index: number) => {
-    containerRef.current[index]?.scrollIntoView({
+    containerRef.current[index]!.scrollIntoView({
       behavior: "smooth", // 부드러운 스크롤
       block: "start", // 요소의 상단이 보이도록 스크롤
     });

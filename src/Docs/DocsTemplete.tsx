@@ -1,27 +1,27 @@
 import { useRef } from "react";
 import CodeBlock from "../component/CodeBlock";
+import HeadLine from "../component/HeadLine";
 
 const DocsTemplete: React.FC = () => {
   const containerRef = useRef<(HTMLDivElement | null)[]>([]);
-  const handleScroll = (index: number) => {
-    if (containerRef.current[index]) {
-      containerRef.current[index]?.scrollIntoView({
-        behavior: "smooth", // 부드러운 스크롤
-        block: "start", // 요소의 상단이 보이도록 스크롤
-      });
-    }
-  };
 
   return (
     <div className="grid h-[3700px] w-[860px] grid-cols-[5fr_1fr] items-start">
       <div className="flex flex-row justify-center">
         <div className="mt-10 w-[640px]">
-          <h1
-            className="mt-7 text-2xl font-bold"
+          <HeadLine
+            headline="test1"
             ref={(el) => (containerRef.current[0] = el)}
-          >
-            1st text
-          </h1>
+          />
+          <HeadLine
+            headline="t123"
+            ref={(el) => (containerRef.current[1] = el)}
+          />
+          <HeadLine
+            headline="test3"
+            ref={(el) => (containerRef.current[2] = el)}
+          />
+
           <p className="break-words pt-8 text-base font-normal">
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
@@ -43,16 +43,36 @@ hi();
           />
         </div>
       </div>
-      <div className="sticky top-20">
-        <button
-          className="cursor-pointer"
-          onClick={() => {
-            handleScroll(0);
-          }}
-        >
-          1st text
-        </button>
-      </div>
+
+      <ContentNavigation domList={containerRef.current} />
+    </div>
+  );
+};
+
+const ContentNavigation = ({ domList }) => {
+  const handleScroll = (index: number) => {
+    if (domList[index]) {
+      domList[index]?.scrollIntoView({
+        behavior: "smooth", // 부드러운 스크롤
+        block: "start", // 요소의 상단이 보이도록 스크롤
+      });
+    }
+  };
+  return (
+    <div className="sticky top-20 flex flex-col">
+      {domList.map((_, index: number) => {
+        return (
+          <button
+            className="cursor-pointer"
+            onClick={() => {
+              handleScroll(index);
+            }}
+            key={index}
+          >
+            {domList[index].innerText}
+          </button>
+        );
+      })}
     </div>
   );
 };
