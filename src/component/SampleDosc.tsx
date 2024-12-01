@@ -1,11 +1,9 @@
-import { useParams } from "react-router-dom";
 import { useRef } from "react";
 import CodeBlock from "./CodeBlock";
 
-const ShowDocs: React.FC = () => {
+const SampleDocs: React.FC = () => {
   const containerRef = useRef<HTMLDivElement[] | null>([]);
   const handleScroll = (index: number) => {
-    console.log(containerRef.current[index]);
     containerRef.current[index]?.scrollIntoView({
       behavior: "smooth", // 부드러운 스크롤
       block: "start", // 요소의 상단이 보이도록 스크롤
@@ -196,7 +194,7 @@ console.log(completion.choices[0].message);
           <pre className="font-mono text-sm">
             <CodeBlock
               code={`Well, sugar, that's a fine question you've got there! Now, in the world of 
-JavaScript, semicolons are indeed a bit like the pearls on a necklace – you 
+JavaScript, semicolons are indeed a bit like the pearls on a necklace  you 
 might slip by without 'em, but you sure do look more polished with 'em in place. 
 
 Technically, JavaScript has this little thing called "automatic semicolon 
@@ -333,4 +331,4 @@ might get a tad confused and cause all sorts of unexpected behavior.
   );
 };
 
-export default ShowDocs;
+export default SampleDocs;

@@ -11,8 +11,15 @@ const Profile: React.FC = () => {
       <Header />
       <div className="flex flex-1 flex-row overflow-y-auto">
         <div className="w-[230px] bg-[#f9f9f9]">
-          <DocsBox boxName="Profile" />
-          <DocsBox boxName="Organize" />
+          <DocsBox
+            boxName="Profile"
+            docsName={["Your Profile", "Age", "Adress"]}
+            endPoint={["profile"]}
+          />
+          <DocsBox
+            boxName="Organize"
+            docsName={["General", "APIkey", "AdminKey"]}
+          />
         </div>
         <div className="flex flex-1 flex-col justify-center overflow-y-auto">
           <div className="flex flex-row justify-center">
@@ -25,7 +32,7 @@ const Profile: React.FC = () => {
               readOnly
               value={key}
             ></textarea>
-            {isNaN(key) ? (
+            {typeof key === "string" ? (
               <button
                 className="w-20 rounded-xl bg-red-300"
                 onClick={() => {

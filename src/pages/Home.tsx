@@ -6,9 +6,10 @@ import { useEffect } from "react";
 const Home: React.FC = () => {
   const { isAuthenticated, isLoading } = useAuth0();
   useEffect(() => {
-    if (!isLoading && isAuthenticated) nav("document/test1");
+    const nav = useNavigate();
+    if (!isLoading && isAuthenticated) nav("document/test");
   }, [isLoading]);
-  const nav = useNavigate();
+
   return (
     <div>
       <LoginButton />

@@ -3,37 +3,30 @@ import "./tailwind.css";
 
 interface DocsBoxProps {
   boxName: string;
+  docsName: string[];
+  endPoint?: string[];
 }
 
-const DocsBox: React.FC<DocsBoxProps> = ({ boxName }) => {
+const DocsBox: React.FC<DocsBoxProps> = ({ boxName, docsName, endPoint }) => {
   const nav = useNavigate();
   return (
     <div className="ml-4 w-[170px]">
       <h1 className="">{boxName}</h1>
-      <p
-        className="docList"
-        onClick={() => {
-          nav("/document/test1");
-        }}
-      >
-        first Docs
-      </p>
-      <p
-        className="docList"
-        onClick={() => {
-          nav("/document/test2");
-        }}
-      >
-        second Docs
-      </p>
-      <p
-        className="docList"
-        onClick={() => {
-          nav("/document/test3");
-        }}
-      >
-        third Docs
-      </p>
+      {docsName.map((docName, index) => {
+        return (
+          <p
+            key={docName}
+            className="docList"
+            onClick={() => {
+              endPoint && endPoint[index]
+                ? nav(`./../${endPoint[index]}`)
+                : nav(`./../${docName}`);
+            }}
+          >
+            {docName}
+          </p>
+        );
+      })}
     </div>
   );
 };

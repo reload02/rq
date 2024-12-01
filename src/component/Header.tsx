@@ -8,7 +8,7 @@ const Header: React.FC = () => {
       <button
         className="mr-10"
         onClick={() => {
-          nav("/document/test1");
+          nav("/document/test");
         }}
       >
         Docs
@@ -16,7 +16,7 @@ const Header: React.FC = () => {
       <button
         className="mr-10"
         onClick={() => {
-          nav("/profile");
+          nav("/profile/profile");
         }}
       >
         Profile
