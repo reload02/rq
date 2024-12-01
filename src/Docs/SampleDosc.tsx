@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import CodeBlock from "./CodeBlock";
+import CodeBlock from "../component/CodeBlock";
 
 const SampleDocs: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement[] | null>([]);
+  const containerRef = useRef<(HTMLDivElement | null)[]>([]);
   const handleScroll = (index: number) => {
     containerRef.current[index]?.scrollIntoView({
       behavior: "smooth", // 부드러운 스크롤

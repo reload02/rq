@@ -1,6 +1,6 @@
 import DocsBox from "../component/DocsBox";
-import SampleDocs from "../component/SampleDosc";
 import Header from "../component/Header";
+import fetchDoc from "../API/fetchData";
 
 const Doc: React.FC = () => {
   return (
@@ -30,7 +30,7 @@ const Doc: React.FC = () => {
           />
         </div>
         <div className="flex flex-1 justify-center overflow-y-auto">
-          <SampleDocs />
+          {fetchDoc()}
         </div>
       </div>
     </div>
