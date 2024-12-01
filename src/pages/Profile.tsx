@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import DocsBox from "../component/DocsBox";
 import { useState } from "react";
 const Profile: React.FC = () => {
-  const [key, setKey] = useState(0);
+  const [key, setKey] = useState<number | string>("발급버튼을 누르시오");
   const { user } = useAuth0();
   const ps: string | undefined = user?.picture;
   return (
@@ -14,25 +14,29 @@ const Profile: React.FC = () => {
           <DocsBox boxName="Profile" />
           <DocsBox boxName="Organize" />
         </div>
-        <div className="flex flex-col justify-center overflow-y-auto">
-          <div className="flex flex-row">
+        <div className="flex flex-1 flex-col justify-center overflow-y-auto">
+          <div className="flex flex-row justify-center">
             <img src={ps} className="h-10 w-10" />
             <div>{user?.name}</div>
           </div>
-          <div className="flex flex-row">
+          <div className="flex flex-row justify-center">
             <textarea
               className="h-[50px] w-[500px] resize-none bg-slate-200 p-3 focus:outline-none"
               readOnly
               value={key}
             ></textarea>
-            <button
-              className="w-20 rounded-xl bg-red-300"
-              onClick={() => {
-                setKey(Math.floor(Math.random() * 10000000000000000));
-              }}
-            >
-              생성
-            </button>
+            {isNaN(key) ? (
+              <button
+                className="w-20 rounded-xl bg-red-300"
+                onClick={() => {
+                  setKey(Math.floor(Math.random() * 10000000000000000));
+                }}
+              >
+                발급
+              </button>
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>
