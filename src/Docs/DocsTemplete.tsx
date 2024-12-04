@@ -49,7 +49,7 @@ hi();
   );
 };
 
-const ContentNavigation = ({ domList }) => {
+const ContentNavigation = ({ domList }: { domList: any }) => {
   const handleScroll = (index: number) => {
     if (domList[index]) {
       domList[index]?.scrollIntoView({
@@ -60,7 +60,7 @@ const ContentNavigation = ({ domList }) => {
   };
   return (
     <div className="sticky top-20 flex flex-col">
-      {domList.map((_, index: number) => {
+      {domList.map((_: any, index: number) => {
         return (
           <button
             className="cursor-pointer"

@@ -1,8 +1,13 @@
 import Header from "../component/Header";
-import { useAuth0 } from "@auth0/auth0-react";
 import DocsBox from "../component/DocsBox";
 import { useState } from "react";
-const Profile: React.FC = () => {
+import { useAuth } from "../Hooks/useAuth";
+import LogoutButton from "../component/LogOut";
+import { useParams } from "react-router-dom";
+import Profile from "../component/profile";
+
+const Setting: React.FC = () => {
+  const { d } = useParams();
   return (
     <div className="flex h-screen flex-col">
       <Header />
@@ -10,7 +15,7 @@ const Profile: React.FC = () => {
         <div className="w-[230px] bg-[#f9f9f9]">
           <DocsBox
             boxName="Profile"
-            docsName={["Your Profile", "Age", "Adress"]}
+            docsName={["Your Profile"]}
             endPoint={["profile"]}
           />
           <DocsBox
@@ -18,7 +23,7 @@ const Profile: React.FC = () => {
             docsName={["General", "APIkey", "AdminKey"]}
           />
         </div>
-        <GrantAPI />
+        {d === "profile" ? <Profile /> : <GrantAPI />}
       </div>
     </div>
   );
@@ -26,13 +31,14 @@ const Profile: React.FC = () => {
 
 const GrantAPI: React.FC = () => {
   const [key, setKey] = useState<number>();
-  const { user } = useAuth0();
-  const ps: string | undefined = user?.picture;
+  const { user } = useAuth();
+  if (!user) return null;
+  const ps: string | undefined = user?.photoURL || "";
   return (
-    <div className="flex flex-1 flex-col justify-center overflow-y-auto">
+    <div className="flex flex-1 flex-col p-10">
       <div className="flex flex-row justify-center">
         <img src={ps} className="h-10 w-10" />
-        <div>{user?.name}</div>
+        <div>{user.displayName}</div>
       </div>
       <div className="flex flex-row justify-center">
         <textarea
@@ -58,4 +64,4 @@ const GrantAPI: React.FC = () => {
   );
 };
 
-export default Profile;
+export default Setting;

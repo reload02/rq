@@ -1,20 +1,24 @@
 import { useNavigate } from "react-router-dom";
-import LoginButton from "../component/LoginButton";
-import { useAuth0 } from "@auth0/auth0-react";
+import Login from "../component/login";
+import { useAuth } from "../Hooks/useAuth";
 import { useEffect } from "react";
 
 const Home: React.FC = () => {
-  const { isAuthenticated, isLoading } = useAuth0();
-  useEffect(() => {
-    const nav = useNavigate();
-    if (!isLoading && isAuthenticated) nav("document/test");
-  }, [isLoading]);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
-  return (
-    <div>
-      <LoginButton />
-    </div>
-  );
+  useEffect(() => {
+    if (user) {
+      navigate("/document/test1"); // 리디렉션은 렌더링 후 실행
+    }
+  }, [user, navigate]);
+
+  if (user === null) {
+    return <Login />; // 로그인 컴포넌트 렌더링
+  }
+
+  // 로딩 상태나 다른 처리 로직이 필요하면 여기에 추가
+  return null;
 };
 
 export default Home;

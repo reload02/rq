@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 
 // Props 타입 정의
 interface Props {
@@ -7,14 +7,12 @@ interface Props {
 }
 
 // forwardRef의 올바른 타입 정의
-const HeadLine = forwardRef<HTMLHeadingElement, Props>(
-  ({ headline, headlinePointer }, ref) => {
-    return (
-      <h1 className="mt-7 text-2xl font-bold" ref={ref}>
-        {headline}
-      </h1>
-    );
-  },
-);
+const HeadLine = forwardRef<HTMLHeadingElement, Props>(({ headline }, ref) => {
+  return (
+    <h1 className="mt-7 text-2xl font-bold" ref={ref}>
+      {headline}
+    </h1>
+  );
+});
 
 export default HeadLine;

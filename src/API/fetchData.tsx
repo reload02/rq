@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-
 import DocsTemplete from "../Docs/DocsTemplete";
 import SampleDocs from "../Docs/SampleDosc";
 
