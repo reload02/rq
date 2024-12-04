@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { User, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
+
 interface AuthContextProps {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
@@ -18,7 +19,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<User | null>(null);
-
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     // Firebase 인증 상태 확인

@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Doc from "./pages/Document";
 import Profile from "./pages/Setting";
 import { AuthProvider } from "./Hooks/useAuth";
+import ProtectedRoute from "./component/ProtectedRoute";
 
 function App() {
   return (
@@ -11,8 +12,22 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/document/:docsID" element={<Doc />} />
-          <Route path="/setting/:d" element={<Profile />} />
+          <Route
+            path="/document/:docsID"
+            element={
+              <ProtectedRoute>
+                <Doc />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/setting/:d"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>

@@ -2,7 +2,6 @@ import Header from "../component/Header";
 import DocsBox from "../component/DocsBox";
 import { useState } from "react";
 import { useAuth } from "../Hooks/useAuth";
-import LogoutButton from "../component/LogOut";
 import { useParams } from "react-router-dom";
 import Profile from "../component/profile";
 

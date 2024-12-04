@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Hooks/useAuth";
+import DropdownMenu from "./ProfileMenu";
 
 const Header: React.FC = () => {
   const nav = useNavigate();
@@ -23,7 +24,8 @@ const Header: React.FC = () => {
       >
         ⚙️
       </button>
-      <img src={user?.photoURL || ""} className="m-3 h-10 w-10 rounded-full" />
+
+      <DropdownMenu photo={user?.photoURL || ""} />
     </div>
   );
 };
