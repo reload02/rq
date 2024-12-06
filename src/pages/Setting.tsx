@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuth } from "../Hooks/useAuth";
 import { useParams } from "react-router-dom";
 import Profile from "../component/profile";
+import DashBoard from "../component/DashBoard";
 
 const Setting: React.FC = () => {
   const { d } = useParams();
@@ -22,7 +23,13 @@ const Setting: React.FC = () => {
             docsName={["General", "APIkey", "AdminKey"]}
           />
         </div>
-        {d === "profile" ? <Profile /> : <GrantAPI />}
+        {d === "profile" ? (
+          <Profile />
+        ) : d === "General" ? (
+          <DashBoard />
+        ) : (
+          <GrantAPI />
+        )}
       </div>
     </div>
   );
